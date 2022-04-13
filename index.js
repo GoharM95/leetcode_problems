@@ -340,3 +340,82 @@ function getRow(rowIndex) {
 console.log(getRow(4));
 
 ///////
+
+// 125
+function validPalindrome(s) {
+  let pointerOne = 0;
+  let pointerTwo = s.length - 1;
+
+  while (pointerOne < pointerTwo) {
+    while (!isValidCharacter(s.charAt(pointerOne))) {
+      pointerOne++;
+    }
+
+    while (!isValidCharacter(s.charAt(pointerTwo))) {
+      pointerTwo--;
+    }
+
+    if (
+      s.charAt(pointerOne).toLowerCase() !== s.charAt(pointerTwo).toLowerCase()
+    ) {
+      return false;
+    }
+
+    pointerOne++;
+    pointerTwo--;
+  }
+
+  return true;
+}
+
+let isValidCharacter = function (char) {
+  let alphabet = "abcdefghijklmnopqrstuvwxyz0123456789";
+
+  return alphabet.indexOf(char.toLowerCase()) > -1;
+};
+
+console.log(validPalindrome("A man, a plan, a canal: Panama"));
+console.log(validPalindrome("race a car"));
+
+// 136
+function singleNumber(nums) {
+  let set = new Set();
+
+  for (let num of nums) {
+    if (set.has(num)) {
+      set.delete(num);
+    } else {
+      set.add(num);
+    }
+  }
+
+  return Array.from(set)[0];
+}
+
+console.log(singleNumber([2, 2, 1]));
+
+// 136
+function majorityElement(nums) {
+  if (nums.length === 1) {
+    return nums[0];
+  }
+
+  let half = nums.length / 2;
+  let elementCount = new Map();
+
+  for (let num of nums) {
+    if (!elementCount.has(num)) {
+      elementCount.set(num, 1);
+    } else {
+      elementCount.set(num, elementCount.get(num) + 1);
+    }
+
+    if (elementCount.get(num) > half) {
+      return num;
+    }
+  }
+
+  return -1;
+}
+
+console.log(majorityElement([3, 2, 3]));
