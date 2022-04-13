@@ -419,3 +419,79 @@ function majorityElement(nums) {
 }
 
 console.log(majorityElement([3, 2, 3]));
+
+///////
+
+// 202
+function isHappy(n) {
+  let seen = new Set();
+
+  while (!seen.has(n)) {
+    seen.add(n);
+    let sum = 0;
+    while (n > 0) {
+      const lastDigit = n % 10;
+      n = (n - lastDigit) / 10;
+      sum += lastDigit ** 2;
+    }
+    if (sum === 1) {
+      return true;
+    }
+
+    n = sum;
+  }
+  return false;
+}
+
+console.log(isHappy(19345));
+
+// 205
+function isIsomorphic(s, t) {
+  if (s.length !== t.length) {
+    return false;
+  }
+
+  let sMap = {};
+  let tMap = {};
+
+  for (let i = 0; i < s.length; i++) {
+    let sChar = s[i];
+    let tChar = t[i];
+
+    if (sMap[sChar] === undefined) {
+      sMap[sChar] = tChar;
+    }
+
+    if (tMap[tChar] === undefined) {
+      tMap[tChar] = sChar;
+    }
+
+    if (sMap[sChar] !== tChar || tMap[tChar] !== sChar) {
+      return false;
+    }
+  }
+  return true;
+}
+
+console.log(isIsomorphic("foo", "bar"));
+
+// 217
+function containsDuplicate(nums) {
+  if (!nums.length) {
+    return [];
+  }
+
+  let set = new Set();
+
+  for (let i = 0; i < nums.length; i++) {
+    if (set.has(nums[i])) {
+      return true;
+    } else {
+      set.add(nums[i]);
+    }
+  }
+
+  return false;
+}
+
+console.log(containsDuplicate([1, 2, 3, 4]));
