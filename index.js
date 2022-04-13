@@ -262,3 +262,81 @@ function mySqrt(num) {
 }
 
 console.log(mySqrt(4));
+
+///////
+
+// 88
+function merge(nums1, m, nums2, n) {
+  let first = m - 1;
+  let second = n - 1;
+
+  for (var i = m + n - 1; i >= 0; i--) {
+    if (second < 0) {
+      break;
+    }
+
+    if (first >= 0 && nums1[first] > nums2[second]) {
+      nums1[i] = nums1[first];
+      first--;
+    } else {
+      nums1[i] = nums2[second];
+      second--;
+    }
+  }
+  return nums1;
+}
+
+console.log(merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3));
+
+// 118
+function generate(numRows) {
+  let triangle = [];
+
+  if (numRows === 0) {
+    return triangle;
+  }
+
+  triangle.push([1]);
+
+  for (let i = 1; i < numRows; i++) {
+    let prevRow = triangle[i - 1];
+    let newRow = [];
+
+    newRow.push(1);
+
+    for (let j = 1; j < prevRow.length; j++) {
+      newRow.push(prevRow[j - 1] + prevRow[j]);
+    }
+
+    newRow.push(1);
+    triangle.push(newRow);
+  }
+
+  return triangle;
+}
+
+console.log(generate(4));
+
+// 119
+function getRow(rowIndex) {
+  let row = [];
+
+  if (rowIndex < 0) {
+    return row;
+  }
+
+  row.push(1);
+
+  for (let i = 1; i <= rowIndex; i++) {
+    for (let j = row.length - 1; j > 0; j--) {
+      row[j] = row[j - 1] + row[j];
+    }
+    row.push(1);
+  }
+
+  return row;
+}
+
+console.log(getRow(4));
+
+///////
