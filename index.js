@@ -193,3 +193,72 @@ function maxSubArray(arr) {
 }
 
 console.log(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]));
+
+///////
+
+// 58
+function lengthOfLastWord(str) {
+  let lastWordLength = 0;
+  let beforeFirstNonEmptyChar = true;
+
+  if (str.length === 0) {
+    return lastWordLength;
+  }
+
+  for (let i = str.length - 1; i >= 0; i--) {
+    if (str.charAt(i) !== " ") {
+      lastWordLength++;
+      beforeFirstNonEmptyChar = false;
+    } else if (!beforeFirstNonEmptyChar) {
+      break;
+    }
+  }
+
+  return lastWordLength;
+}
+
+console.log(lengthOfLastWord("Hello World"));
+console.log(lengthOfLastWord("   fly me   to   the moon  "));
+
+// 66
+function plusOne(arr) {
+  for (let i = arr.length - 1; i >= 0; i--) {
+    if (arr[i] !== 9) {
+      arr[i]++;
+      return arr;
+    } else {
+      arr[i] = 0;
+    }
+  }
+  arr.unshift(1);
+  return arr;
+}
+
+// console.log(plusOne([1, 2, 3])); // [1, 2, 4]
+console.log(plusOne([1, 2, 9])); // [1, 3, 0]
+
+// 69
+function mySqrt(num) {
+  if (num < 2) {
+    return num;
+  }
+
+  let left = 1;
+  let right = num;
+
+  while (left < right) {
+    let mid = left + Math.floor((right - left) / 2);
+
+    if (mid * mid === num) {
+      return mid;
+    } else if (mid * mid > num) {
+      right = mid;
+    } else if (mid * mid < num) {
+      left = mid + 1;
+    }
+  }
+
+  return left - 1;
+}
+
+console.log(mySqrt(4));
