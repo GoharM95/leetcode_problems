@@ -495,3 +495,78 @@ function containsDuplicate(nums) {
 }
 
 console.log(containsDuplicate([1, 2, 3, 4]));
+
+///////
+
+// 219
+function containsNearbyDuplicate(nums, k) {
+  if (!nums.length) {
+    return [];
+  }
+
+  let map = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    if (map.has(nums[i]) && i - map.get(nums[i]) <= k) {
+      console.log(i - map.get(nums[i]));
+      return true;
+    } else {
+      map.set(nums[i], i);
+    }
+  }
+
+  return false;
+}
+
+console.log(containsNearbyDuplicate([1, 2, 3, 1], 3));
+
+// 231
+function isPowerOfTwo(n) {
+  if (n < 1) {
+    return false;
+  }
+
+  let powerOfTwo = 1;
+  while (powerOfTwo < n) {
+    powerOfTwo *= 2;
+  }
+  return powerOfTwo === n;
+}
+
+console.log(isPowerOfTwo(1));
+
+// 258
+function addDigits(num) {
+  let sum = 0;
+
+  while (num >= 10) {
+    sum += num % 10;
+    num = Math.floor(num / 10);
+
+    if (num < 10) {
+      num += sum;
+      sum = 0;
+    }
+  }
+
+  return num;
+}
+
+console.log(addDigits(38));
+
+// 263
+function isUgly(num) {
+  if (num < 1) return false;
+  if (num === 1) return true;
+
+  var divisor = [2, 3, 5];
+
+  for (var i = 0; i < divisor.length; i++) {
+    while (num && num % divisor[i] === 0) {
+      num = Math.floor(num / divisor[i]);
+    }
+  }
+
+  return num === 1;
+}
+
+console.log(isUgly(14));
