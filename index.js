@@ -67,6 +67,8 @@ function romanToInt(roman) {
 console.log(romanToInt("XCIV"));
 console.log(romanToInt("LVIII"));
 
+///////
+
 // 14
 function longestCommonPrefix(strsArr) {
   let longestPrefix = "";
@@ -144,3 +146,50 @@ function removeDuplicates(arr) {
 }
 
 console.log(removeDuplicates([1, 1, 2]));
+
+///////
+
+// 27
+function removeElement(arr, target) {
+  let pointer1 = 0;
+
+  for (let pointer2 = 0; pointer2 < arr.length; pointer2++) {
+    if (arr[pointer2] !== target) {
+      arr[pointer1] = arr[pointer2];
+      pointer1++;
+    }
+  }
+  return pointer1;
+}
+
+console.log(removeDuplicates([1, 2, 2, 1], 1));
+
+// 35
+function searchInsertPosition(arr, target) {
+  let index = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === target || arr[i] > target) {
+      return index;
+    } else {
+      index++;
+    }
+  }
+}
+
+console.log(searchInsertPosition([1, 3, 5, 6], 5));
+
+// 53
+function maxSubArray(arr) {
+  let maxCurrent = arr[0];
+  let maxGlobal = arr[0];
+
+  for (let i = 1; i < arr.length; i++) {
+    maxCurrent = Math.max(arr[i], maxCurrent + arr[i]);
+    if (maxCurrent > maxGlobal) {
+      maxGlobal = maxCurrent;
+    }
+  }
+  return maxGlobal;
+}
+
+console.log(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]));
