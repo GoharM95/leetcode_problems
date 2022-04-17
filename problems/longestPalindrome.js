@@ -7,19 +7,19 @@
 // Explanation:
 // One longest palindrome that can be built is "dccaccd", whose length is 7.
 
-// 409
-function longestPalindrome(str) {
-  let longest = 0;
-  let valuesObj = {};
+// // 409
+// function longestPalindrome(str) {
+//   let longest = 0;
+//   let valuesObj = {};
 
-  for (let char of str) {
-    valuesObj[char] = (valuesObj[char] || 0) + 1;
+//   for (let char of str) {
+//     valuesObj[char] = (valuesObj[char] || 0) + 1;
 
-    if (valuesObj[char] % 2 === 0) {
-      longest += 2;
-    }
-  }
-  return str.length > longest ? longest + 1 : longest;
-}
+//     if (valuesObj[char] % 2 === 0) {
+//       longest += 2;
+//     }
+//   }
+//   return str.length > longest ? longest + 1 : longest;
+// }
 
-console.log(longestPalindrome("abccccdd"));
+// console.log(longestPalindrome("abccccdd"));
