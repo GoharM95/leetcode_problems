@@ -5,21 +5,21 @@
 // Output: 5
 // Explanation: The five segments are ["Hello,", "my", "name", "is", "John"]
 
-// 434
-function countSegments(str) {
-  let count = 0;
-  let i = 0;
+// // 434
+// function countSegments(str) {
+//   let count = 0;
+//   let i = 0;
 
-  while (i < str.length) {
-    if (str[i] !== " ") {
-      count++;
-      while (i < str.length && str[i] !== " ") {
-        i++;
-      }
-    }
-    i++;
-  }
-  return count;
-}
+//   while (i < str.length) {
+//     if (str[i] !== " ") {
+//       count++;
+//       while (i < str.length && str[i] !== " ") {
+//         i++;
+//       }
+//     }
+//     i++;
+//   }
+//   return count;
+// }
 
-console.log(countSegments("Hello, my name is John"));
+// console.log(countSegments("Hello, my name is John"));
