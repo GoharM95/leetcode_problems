@@ -23,3 +23,12 @@ function countSegments(str) {
 }
 
 console.log(countSegments("Hello, my name is John"));
+
+// with split
+function countSegments(str) {
+  const strArr = str.split(" ");
+  const filteredStrArr = strArr.filter((elem) => elem);
+  return filteredStrArr.length;
+}
+
+console.log(countSegments(" Hello,   my   name is John"));
