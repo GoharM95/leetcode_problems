@@ -13,6 +13,7 @@
 // Output: 16
 // Explanation: The perimeter is the 16 yellow stripes in the image above.
 
+// 463
 function isLandPerimeter(grid) {
   let perimeter = 0;
   for (let i = 0; i < grid.length; i++) {
